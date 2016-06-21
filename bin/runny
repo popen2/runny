@@ -1,0 +1,61 @@
+#!/bin/sh
+
+print_logo() {
+    echo "+--------------------------------------------------+"
+    echo "|                                                  |"
+    echo "|                     runny                        |"
+    echo "|                                                  |"
+    echo "+--------------------------------------------------+"
+}
+
+db_error() {
+    echo "error: Could not find database configuration."
+    echo
+    echo "If you're running with Docker, please use --link to a RethinkDB container."
+    echo
+    echo "To manually pass database configuration with environment variables:"
+    echo
+    echo "   RETHINKDB_PORT_28015_TCP_ADDR -- RethinkDB hostname"
+    echo "   RETHINKDB_PORT_28015_TCP_PORT -- RethinkDB port"
+    echo "   RETHINKDB_AUTH                -- Authentication string (optional)"
+    echo "   RETHINKDB_DB                  -- Database name (default: runny)"
+    echo
+    exit 1
+}
+
+verify_db_env() {
+    if [ ! "$RETHINKDB_PORT_28015_TCP_ADDR" ]
+    then
+        db_error
+    fi
+    if [ ! "$RETHINKDB_PORT_28015_TCP_PORT" ]
+    then
+        db_error
+    fi
+}
+
+check_dev() {
+    if [ "$RUNNY_DEV" ]
+    then
+        (cd /opt/runny/backend && npm link)
+    fi
+}
+
+init_db() {
+    runny-init-db
+    if [ $? -ne 0 ]
+    then
+        echo "error: Could not initialize database"
+        exit 1
+    fi
+}
+
+run_server() {
+    exec runny-server
+}
+
+print_logo
+verify_db_env
+check_dev
+init_db
+run_server

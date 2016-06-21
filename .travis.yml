@@ -1,0 +1,15 @@
+sudo: required
+
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+\.\d+$/
+
+services:
+  - docker
+
+before_script:
+  - docker run -d --name rethinkdb rethinkdb
+
+script:
+  - make docker-image push-docker-image
