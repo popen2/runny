@@ -1,0 +1,112 @@
+$runny-font-weight-min:           300;
+$runny-font-weight-thin:          300;
+$runny-font-weight-normal:        400;
+$runny-font-weight-mild:          500;
+$runny-font-weight-strong:        600;
+$runny-bg-color:                  white;
+$runny-nav-color:                 #fbfbfb;
+
+//-------------------------------
+// Overridden Bootstrap variables
+//-------------------------------
+
+$body-bg:                $runny-bg-color;
+$gray-base:              #333;
+$gray-darker:            lighten($gray-base, 13.5%);
+$gray-dark:              lighten($gray-base, 20%);
+$gray:                   lighten($gray-base, 33.5%);
+$gray-light:             lighten($gray-base, 46.7%);
+$gray-lighter:           lighten($gray-base, 93.5%);
+
+$brand-primary:           #337ab7;
+$brand-success:           #5cb85c;
+$brand-info:              #777;
+$brand-warning:           #f0ad4e;
+$brand-danger:            #d9534f;
+
+$font-size-base:          16px;
+$font-family-sans-serif:  "Lato", Helvetica, Arial, sans-serif;
+$font-family-serif:       $font-family-sans-serif;
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+$headings-font-family:    $font-family-sans-serif;
+$headings-font-weight:    $runny-font-weight-mild;
+$btn-font-weight:         $runny-font-weight-normal;
+$alert-link-font-weight:  $runny-font-weight-normal;
+$badge-font-weight:       $runny-font-weight-normal;
+$navbar-height:           64px;
+$navbar-margin-bottom:    0;
+
+//------------------
+// Runny variables
+//------------------
+
+$lato-font-path:                            "/static/bower_components/lato-font/fonts";
+
+$runny-login-box-margin:                 (2 * $font-size-base) ($font-size-base);
+$runny-login-box-padding:                ($font-size-base) ($font-size-base);
+$runny-login-box-radius:                 (0.75 * $font-size-base);
+$runny-login-box-img-margin:             (1.5 * $font-size-base) 0 (3 * $font-size-base) 0;
+$runny-login-box-width:                  450px;
+
+$runny-nav-link-active-border-color:     orange;
+$runny-nav-link-active-border-size:      3px;
+
+$navbar-runny-color:                     #777;
+$navbar-runny-bg:                        $runny-nav-color;
+$navbar-runny-border:                    $runny-nav-color;
+$navbar-runny-link-hover-color:          $navbar-runny-color;
+$navbar-runny-link-hover-bg:             transparent;
+$navbar-runny-link-active-bg:            transparent;
+$navbar-runny-link-active-border-color:  $runny-nav-link-active-border-color;
+$navbar-runny-link-active-border-size:   $runny-nav-link-active-border-size;
+$navbar-runny-link-disabled-color:       #ccc;
+$navbar-runny-link-disabled-bg:          transparent;
+$navbar-runny-brand-size:                28px;
+$navbar-runny-brand-frame:               6px;
+$navbar-runny-toggle-hover-bg:           transparent;
+$navbar-runny-toggle-icon-bar-bg:        transparent;
+$navbar-runny-toggle-border-color:       #ddd;
+
+$runny-page-top-nav-bg:                  $runny-nav-color;
+$runny-page-top-nav-border-color:        #e7e7e7;
+$runny-page-top-nav-border-size:         1px;
+$runny-page-top-nav-spacing:             floor(0.25 * $font-size-base);
+
+$runny-page-layout-width:                  950px;
+$runny-page-layout-nav-width:              250px;
+$runny-page-layout-nav-font-size:          floor(0.875 * $font-size-base);
+$runny-page-layout-nav-heading-color:      #aaa;
+$runny-page-layout-nav-active-color:       #f3f3f3;
+$runny-page-layout-nav-spacing-horizontal: floor($font-size-base / 2);
+$runny-page-layout-nav-section-items:      floor(0.4 * $font-size-base);
+$runny-page-layout-nav-section-spacing:    floor(1.5 * $font-size-base);
+
+$runny-dropdown-menu-heading-color:      #aaa;
+$runny-dropdown-menu-heading-padding:    3px 20px; // Bootstrap value
+$runny-dropdown-menu-heading-font-size:  .8rem;
+
+$nav-link-padding:                         .5rem 1rem;
+$runny-nav-pills-color:                  gray;
+$runny-nav-pills-font-weight:            $runny-font-weight-strong;
+$runny-nav-pills-padding:                1rem 1rem .5rem 1rem;
+
+$runny-profile-picture-border-color:     lighten($gray-base, 70%);
+
+$runny-status-dot-size:                  4px;
+$runny-status-dot-border-size:           2px;
+$runny-status-dot-contrast:              10%;
+$runny-status-dot-color-primary:         $brand-primary;
+$runny-status-dot-color-success:         $brand-success;
+$runny-status-dot-color-info:            $brand-info;
+$runny-status-dot-color-warning:         $brand-warning;
+$runny-status-dot-color-danger:          $brand-danger;
+$runny-status-dot-color-unknown:         white;
+
+$lbl-default-bg:            $gray-light;
+$lbl-primary-bg:            $brand-primary;
+$lbl-success-bg:            $brand-success;
+$lbl-info-bg:               $brand-info;
+$lbl-warning-bg:            $brand-warning;
+$lbl-danger-bg:             $brand-danger;
+$lbl-color:                 #fff;
+$lbl-link-hover-color:      #fff;

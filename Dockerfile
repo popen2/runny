@@ -1,4 +1,4 @@
-FROM node:6.2
+FROM warehaus/base-image:v14
 
 RUN mkdir -p /var/log/runny
 VOLUME /var/log/runny

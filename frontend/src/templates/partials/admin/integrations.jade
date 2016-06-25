@@ -1,0 +1,19 @@
+mixin navigation
+  ul.page-layout-menu
+    li.heading
+      | Authentication
+    li(ui-sref-active='active')
+      a(ui-sref='.google-login')
+        | Google Login
+    li(ui-sref-active='active')
+      a(ui-sref='.ldap-login')
+        | LDAP Login
+
+mixin content
+  .page-layout
+    .page-layout-nav
+      +navigation
+    .page-layout-content
+      ui-view
+
++content

@@ -1,0 +1,82 @@
+mixin job_status
+  span(style={color: '#666'})
+    span(ng-if='job.error')
+      | {{ job.error }}
+    span(ng-if='!job.error && job.next_run')
+      | Next run
+      | &#32;
+      span(am-time-ago='job.next_run')
+    span(ng-if='!job.error && !job.next_run')
+      | ...
+
+mixin plan_status(env)
+  | &nbsp;
+  span(ng-if=('job.' + env + '_key'))
+    span(ng-switch=('job.status[job.' + env + '_key]'))
+      .label.label-primary(ng-switch-when='building')
+        strong
+          =env
+        | &#32;
+        | building
+      .label.label-default(ng-switch-default)
+        strong
+          =env
+        | &#32;
+        | idle
+
+mixin job_details
+  .row(style={'line-height': '175%'})
+    .col-sm-6
+      span.label.label-default(ng-if='job.disabled')
+        | DISABLED
+      | &#32;
+      strong
+        | {{ job.name }}
+    .col-sm-6.text-right
+      +plan_status('local')
+      +plan_status('aws')
+  .row(style={'line-height': '175%'})
+    .col-sm-8
+      +job_status
+    .col-sm-4.text-right(ng-if='job.interval')
+      i.fa.fa-fw.fa-clock-o
+      | Every {{ job.interval / 3600 }} hours
+
+mixin job_menu
+  .dropdown.pull-right
+    a.text-link.dropdown-toggle(data-toggle='dropdown' aria-haspopup='true' aria-expanded='true')
+      i.icon-options-vertical
+    ul.dropdown-menu
+      li
+        a.link(ng-click='editJob(job.id)')
+          i.fa.fa-fw.fa-pencil
+          | Edit Job
+      li.divider
+      li
+        a.link(ng-click='deleteJob(job.id)')
+          i.fa.fa-fw.fa-trash-o
+          | Delete Job
+
+mixin job_row
+  .main-with-extra
+    .main(style={width: '100%'})
+      +job_details
+    .extra(style={'padding-left': '1rem'})
+      +job_menu
+
+mixin jobs_list
+  ui.list-group
+    li.list-group-item(ng-repeat='(job_id, job) in dbJobs.byId | orderObjectBy:"name"' ng-class="{'opacity05': job.disabled}")
+      +job_row
+    a.link.list-group-item(ng-click='createJob()')
+      i.fa.fa-fw.fa-plus
+      | Create Job
+
+mixin main
+  .page-top-nav
+  .page-layout
+    .page-layout-content-no-nav
+      .panel.panel-default
+        +jobs_list
+
++main

@@ -1,0 +1,154 @@
+.navbar-runny {
+  background-color: $navbar-runny-bg;
+  border-color: $navbar-runny-border;
+
+  .navbar-brand {
+    padding: 0 1rem;
+
+    img {
+      display: inline;
+
+      &.square {
+        margin: (($navbar-height - ($navbar-runny-brand-size + $navbar-runny-brand-frame)) / 2) 0;
+        width: ($navbar-runny-brand-size + $navbar-runny-brand-frame);
+        height: ($navbar-runny-brand-size + $navbar-runny-brand-frame);
+      }
+
+      &.overlay {
+        margin: (($navbar-height - $navbar-runny-brand-size) / 2)
+                0
+                (($navbar-height - $navbar-runny-brand-size) / 2)
+                (-($navbar-runny-brand-size + ($navbar-runny-brand-frame / 2)));
+        width: $navbar-runny-brand-size;
+        height: $navbar-runny-brand-size;
+      }
+    }
+  }
+
+  .navbar-text {
+    color: $navbar-runny-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: $navbar-runny-color;
+
+      &:hover,
+      &:focus {
+        color: $navbar-runny-link-hover-color;
+        background-color: $navbar-runny-link-hover-bg;
+        outline: 0;
+      }
+    }
+    > .active > a {
+      border-width: 0 0 $navbar-runny-link-active-border-size 0;
+      border-style: solid;
+      border-color: $navbar-runny-link-active-border-color;
+      margin: 0 0 (-$navbar-runny-link-active-border-size) 0;
+
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-runny-color;
+        background-color: $navbar-runny-link-active-bg;
+        outline: 0;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-runny-link-disabled-color;
+        background-color: $navbar-runny-link-disabled-bg;
+        outline: 0;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: $navbar-runny-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: $navbar-runny-toggle-hover-bg;
+      outline: 0;
+    }
+    .icon-bar {
+      background-color: $navbar-runny-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $navbar-runny-border;
+  }
+
+  .navbar-nav {
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $navbar-runny-link-active-bg;
+        color: $navbar-runny-color;
+        outline: 0;
+      }
+    }
+
+    @media (max-width: $grid-float-breakpoint-max) {
+      .open .dropdown-menu {
+        > li > a {
+          color: $navbar-runny-color;
+          &:hover,
+          &:focus {
+            color: $navbar-runny-link-hover-color;
+            background-color: $navbar-runny-link-hover-bg;
+            outline: 0;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $navbar-runny-color;
+            background-color: $navbar-runny-link-active-bg;
+            outline: 0;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $navbar-runny-link-disabled-color;
+            background-color: $navbar-runny-link-disabled-bg;
+            outline: 0;
+          }
+        }
+      }
+    }
+  }
+
+
+  .navbar-link {
+    color: $navbar-runny-color;
+    &:hover {
+      color: $navbar-runny-link-hover-color;
+      outline: 0;
+    }
+  }
+
+  .btn-link {
+    color: $navbar-runny-color;
+    &:hover,
+    &:focus {
+      color: $navbar-runny-link-hover-color;
+      outline: 0;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: $navbar-runny-link-disabled-color;
+        outline: 0;
+      }
+    }
+  }
+}

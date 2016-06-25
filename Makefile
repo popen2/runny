@@ -11,13 +11,14 @@ RUN_FRONTEND_BUILDER_IMAGE := @$(DOCKER_RUN_CMDLINE) \
 	--volume $(PROJECT_ROOT):/build \
 	$(FRONTEND_BUILDER_IMAGE) /bin/sh -c
 FRONTEND_INSTALL_CMD := npm install && ./node_modules/.bin/bower install --allow-root
+FRONTEND_BUILD_CMD := ./node_modules/.bin/gulp
 
 build-frontend:
 	@echo "Building frontend..."
-	@$(RUN_FRONTEND_BUILDER_IMAGE) "cd /build/frontend && $(FRONTEND_INSTALL_CMD) && gulp build"
+	@$(RUN_FRONTEND_BUILDER_IMAGE) "cd /build/frontend && $(FRONTEND_INSTALL_CMD) && $(FRONTEND_BUILD_CMD) build"
 
 frontend:
-	@$(RUN_FRONTEND_BUILDER_IMAGE) "cd /build/frontend && $(FRONTEND_INSTALL_CMD) && gulp"
+	@$(RUN_FRONTEND_BUILDER_IMAGE) "cd /build/frontend && $(FRONTEND_INSTALL_CMD) && $(FRONTEND_BUILD_CMD)"
 
 .PHONY: frontend
 
@@ -43,12 +44,17 @@ RUN_DEV_IMAGE := $(DOCKER_RUN_CMDLINE) \
 	--volume $(PROJECT_ROOT):/opt/runny \
 	--volume $(LOCAL_LOGS):/var/log/runny \
 	--publish 80:80 \
+	--env RUNNY_DEV=1 \
+	--env BAMBOO_URL="$(BAMBOO_URL)" \
+	--env BAMBOO_AUTH_URL="$(BAMBOO_AUTH_URL)" \
+	--env BAMBOO_USERNAME="$(BAMBOO_USERNAME)" \
+	--env BAMBOO_PASSWORD="$(BAMBOO_PASSWORD)" \
 	$(DOCKER_IMAGE):dev
 
 run:
 	@echo "Running..."
 	@mkdir -p $(LOCAL_LOGS)
-	@$(RUN_DEV_IMAGE) runny --dev
+	echo $(RUN_DEV_IMAGE) runny
 
 shell:
 	@$(RUN_DEV_IMAGE) /bin/bash

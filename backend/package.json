@@ -5,7 +5,8 @@
   "bin": {
     "runny-init-db": "./init-db.js",
     "runny-api-server": "./api-server.js",
-    "runny-socketio": "./socketio/server.js"
+    "runny-socketio": "./socketio/server.js",
+    "runny-job-runner": "./job-runner.js"
   },
   "dependencies": {
     "bcryptjs": "^2.3.0",
@@ -15,6 +16,7 @@
     "js-data": "^2.9.0",
     "js-data-rethinkdb": "^2.2.0",
     "jsonwebtoken": "^5.7.0",
+    "moment": "^2.13.0",
     "morgan": "^1.7.0",
     "node-schedule": "^1.1.0",
     "passport": "^0.3.2",
@@ -22,6 +24,7 @@
     "passport-google-oauth20": "^1.0.0",
     "passport-jwt": "^2.0.0",
     "passport-local": "^1.0.0",
+    "request": "^2.72.0",
     "rethinkdb": "^2.2.1",
     "rethinkdb-init": "^0.1.1",
     "rethinkdbdash": "^2.3.2",

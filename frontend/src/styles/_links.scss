@@ -1,0 +1,43 @@
+a, button {
+  &,
+  &:hover,
+  &:active {
+    outline: none !important;
+  }
+}
+
+.link {
+  cursor: pointer;
+}
+
+.text-link {
+  cursor: pointer;
+  color: $text-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: lighten($text-color, 10%);
+    text-decoration: none;
+  }
+}
+
+.no-ul {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.list-group {
+  .list-group-item.active {
+    .link {
+      color: white;
+
+      &:hover,
+      &:focus {
+        color: darken(white, 5%);
+      }
+    }
+  }
+}

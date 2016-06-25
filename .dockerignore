@@ -1,0 +1,5 @@
+backend/node_modules
+frontend
+dist/.gitignore
+.DS_Store
+.git

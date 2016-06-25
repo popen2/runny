@@ -1,0 +1,35 @@
+.page-layout {
+  @include container;
+  position: relative;
+
+  .page-layout-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 0 0 ($grid-gutter-width / 2);
+    width: $runny-page-layout-nav-width;
+    min-width: $runny-page-layout-nav-width;
+    max-width: $runny-page-layout-nav-width;
+    font-size: $runny-page-layout-nav-font-size;
+  }
+
+  .page-layout-content {
+    position: absolute;
+    top: 0;
+    left: ($runny-page-layout-nav-width + ($grid-gutter-width / 2));
+    right: ($grid-gutter-width / 2);
+  }
+
+  .page-layout-content-no-nav {
+    position: absolute;
+    padding: 0 ($grid-gutter-width / 2);
+    top: 0;
+    left: 0;
+    right: 0;
+
+    .big-message {
+      padding: 1rem;
+      border-width: 0;
+    }
+  }
+}

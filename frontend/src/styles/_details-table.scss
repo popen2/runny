@@ -1,0 +1,59 @@
+table.details {
+  width: 100%;
+  max-width: 100%;
+
+  td {
+    vertical-align: middle;
+  }
+
+  .heading {
+    font-size: 1.25rem;
+    line-height: 2rem;
+  }
+
+  .tagline {
+    font-size: .875rem;
+  }
+
+  td.main {
+    width: 100%;
+  }
+
+  td.pad-right {
+    padding: 0 .5rem 0 0;
+  }
+
+  td.pad-left {
+    padding: 0 0 0 .5rem;
+  }
+
+  td.pad-both {
+    padding: 0 .5rem;
+  }
+}
+
+.main-with-extra {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .main {
+    flex-wrap: nowrap;
+    flex: 1 1 auto;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .extra {
+    flex: 1 1 auto;
+  }
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Runny frontend",
   "author": "Zohar Zilberman <popen2@gmail.com>",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/runny/runny/issues"
   },

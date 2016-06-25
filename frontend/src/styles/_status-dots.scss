@@ -1,0 +1,30 @@
+.status-dot {
+  display: inline-block;
+  color: white;
+  border-radius: 50%;
+  width: $runny-status-dot-size;
+  height: $runny-status-dot-size;
+}
+
+@mixin status-dot-size($factor) {
+  width: ($factor * $runny-status-dot-size);
+  height: ($factor * $runny-status-dot-size);
+  margin: 0 0 (3px + (-1px * $factor)) 0;
+}
+
+.status-dot-2x { @include status-dot-size(2); }
+.status-dot-3x { @include status-dot-size(3); }
+.status-dot-4x { @include status-dot-size(4); }
+.status-dot-5x { @include status-dot-size(5); }
+
+@mixin status-dot-style($color) {
+  @include gradient-radial(lighten($color, $runny-status-dot-contrast * 2), $color);
+  border: $runny-status-dot-border-size solid darken($color, $runny-status-dot-contrast)
+}
+
+.status-dot-primary { @include status-dot-style($color: $runny-status-dot-color-primary); }
+.status-dot-success { @include status-dot-style($color: $runny-status-dot-color-success); }
+.status-dot-info    { @include status-dot-style($color: $runny-status-dot-color-info); }
+.status-dot-warning { @include status-dot-style($color: $runny-status-dot-color-warning); }
+.status-dot-danger  { @include status-dot-style($color: $runny-status-dot-color-danger); }
+.status-dot-unknown { @include status-dot-style($color: $runny-status-dot-color-unknown); }

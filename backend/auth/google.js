@@ -2,6 +2,7 @@
 
 var passport           = require('passport');
 var createNewUserEvent = require('./events').createNewUserEvent;
+var roles              = require('./roles');
 var logger             = require('../logger');
 var User               = require('../models/user').User;
 var isUsernameTaken    = require('../models/user').isUsernameTaken;

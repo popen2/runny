@@ -91,32 +91,13 @@ const google_users_table = {
 };
 
 //--------------------------------------
-// Objects
+// Jobs
 //--------------------------------------
 
-const objects_table = {
-    name: 'object',
+const jobs_table = {
+    name: 'job',
     indexes: globalIndexes.concat([
-        'slug',
-        'type_id',
-        'parent_id',
-        'last_seen',
-        {
-            name: 'slug_parent',
-            indexFunction: [r.row('slug'), r.row('parent_id')]
-        },
-        {
-            name: 'slug_type',
-            indexFunction: [r.row('slug'), r.row('type_id')]
-        },
-        {
-            name: 'slug_type_parent',
-            indexFunction: [r.row('slug'), r.row('type_id'), r.row('parent_id')]
-        },
-        {
-            name: 'parent_type',
-            indexFunction: [r.row('parent_id'), r.row('type_id')]
-        }
+        'slug'
     ])
 };
 
@@ -143,7 +124,7 @@ r.init(db.config(), [
     users_table,
     user_api_tokens_table,
     google_users_table,
-    objects_table,
+    jobs_table,
     events_table
 ]).then(ensure_settings).then(conn => {
     conn.close();

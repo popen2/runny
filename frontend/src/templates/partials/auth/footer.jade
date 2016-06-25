@@ -1,0 +1,29 @@
+mixin divider
+  span(style='opacity:0.25;')
+    | &nbsp;&nbsp;|&nbsp;&nbsp;
+
+mixin copyright
+  | &copy; 2015-{{ moment().year() }}
+  a(href='https://github.com/runnyio/runny/graphs/contributors' target='_runny_gh_contributors')
+    | &nbsp;Runny contributors
+
+mixin links
+  a(href='http://www.runny.io/docs/license', target='_runny_license')
+    | License
+  +divider
+  a(href='http://www.runny.io/docs/', target='_runny_documentation')
+    | Documentation
+  +divider
+  a(href='https://github.com/runnyio/runny', target='_runny_gh_repo')
+    | GitHub page
+
+.text-center
+  .visible-xs
+    div
+      +copyright
+    div
+      +links
+  .hidden-xs
+    +copyright
+    +divider
+    +links

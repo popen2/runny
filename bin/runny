@@ -23,6 +23,16 @@ db_error() {
     exit 1
 }
 
+bamboo_error() {
+    echo "error: No BAMBOO_URL environment variable set."
+    echo
+    echo "You have to set BAMBOO_URL as your base Bamboo server URL."
+    echo "You can also set BAMBOO_USERNAME and BAMBOO_PASSWORD if yor server requires credentials."
+    echo "In case you need to authenticate against a URL different than Bamboo's URL, provise a BAMBOO_AUTH_URL environment variable."
+    echo
+    exit 1 
+}
+
 verify_db_env() {
     if [ ! "$RETHINKDB_PORT_28015_TCP_ADDR" ]
     then
@@ -31,6 +41,33 @@ verify_db_env() {
     if [ ! "$RETHINKDB_PORT_28015_TCP_PORT" ]
     then
         db_error
+    fi
+}
+
+verify_bamboo_env() {
+    if [ ! "$BAMBOO_URL" ]
+    then
+        bamboo_error
+    else
+        echo "BAMBOO_URL: $BAMBOO_URL"
+    fi
+    if [ "$BAMBOO_AUTH_URL" ]
+    then
+        echo "BAMBOO_AUTH_URL: $BAMBOO_AUTH_URL"
+    else
+        echo "BAMBOO_AUTH_URL: [not set]"
+    fi
+    if [ "$BAMBOO_USERNAME" ]
+    then
+        echo "BAMBOO_USERNAME: $BAMBOO_USERNAME"
+    else
+        echo "BAMBOO_USERNAME: [not set]"
+    fi
+    if [ "$BAMBOO_PASSWORD" ]
+    then
+        echo "BAMBOO_PASSWORD: [password is set]"
+    else
+        echo "BAMBOO_PASSWORD: [not set]"
     fi
 }
 
@@ -51,11 +88,12 @@ init_db() {
 }
 
 run_server() {
-    exec runny-server
+    exec /usr/bin/supervisord -c /opt/runny/etc/supervisor.conf
 }
 
 print_logo
 verify_db_env
+verify_bamboo_env
 check_dev
 init_db
 run_server

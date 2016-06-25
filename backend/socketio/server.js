@@ -13,9 +13,8 @@ var cleanedUser = require('../auth/util').cleanedUser;
 const HTTP_PORT = process.env.HTTP_PORT || 5001;
 
 const TABLE_NOTIFICATIONS = [
-    { dbTable: 'object' },
-    { dbTable: 'user', objectFilter: cleanedUser },
-    { dbTable: 'event' }
+    { dbTable: 'job' },
+    { dbTable: 'user', objectFilter: cleanedUser }
 ];
 
 const startServer = (settings) => {

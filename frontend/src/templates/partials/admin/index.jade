@@ -1,0 +1,58 @@
+mixin page_header
+  .page-top-nav(ng-if='curUser.is_admin')
+    .page-top-nav-row
+      .page-top-nav-row-cell.x2(style={padding: '0 .5rem 0 0'})
+        i.icon-settings
+      .page-top-nav-row-cell
+        .x12
+          strong
+            | Administration
+    .page-top-nav-links
+      ul
+        li(ui-sref-active='active')
+          a.link(ui-sref='.users')
+            | Users
+        li(ui-sref-active='active')
+          a.link(ui-sref='.integrations')
+            | Integrations
+        li.padding
+
+mixin forbidden_message
+  .big-message
+    h3.text-center
+      i.icon-directions.x6
+    p.text-center.x2
+      | It looks like you're lost
+    .row
+      .col-sm-offset-3.col-sm-6
+        h4
+          button.btn.btn-lg.btn-block.btn-success(type='button' ui-sref='labs')
+            | Yes, take me somewhere safe
+    .row
+      .col-sm-offset-3.col-sm-6
+        h4
+          button.btn.btn-lg.btn-block.btn-default(type='button' ui-sref='labs')
+            | No, I should be here
+
+mixin non_admin_message
+  .page-top-nav(ng-if='!curUser.is_admin')
+    .page-top-nav-row
+      .page-top-nav-row-cell.x25
+        i.fa.fa-fw.fa-frown-o
+      .page-top-nav-row-cell
+        .x15
+          strong
+            | Oh no
+    .page-top-nav-links
+      ul
+        li.padding
+  .page-layout(ng-if='!curUser.is_admin')
+    .page-layout-content-no-nav
+      +forbidden_message
+
+mixin content
+  +non_admin_message
+  +page_header
+  ui-view(ng-if='curUser.is_admin')
+
++content

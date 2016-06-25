@@ -1,0 +1,30 @@
+mixin page_header
+  .page-top-nav
+    .page-top-nav-row
+      .page-top-nav-row-cell(style={padding: '0 .5rem 0 0'})
+        user-avatar(id='curUser.id' size='42px')
+      .page-top-nav-row-cell
+        .x12
+          strong
+            user-display-name(id='curUser.id')
+        div
+          user-email(id='curUser.id')
+    .page-top-nav-links
+      ul
+        li.padding
+
++page_header
+.page-layout
+  .page-layout-nav
+    ul.page-layout-menu
+      li(ui-sref-active='active')
+        a(ui-sref='.profile')
+          | Profile
+      li(ui-sref-active='active')
+        a(ui-sref='.api-tokens')
+          | API Tokens
+      li(ui-sref-active='active')
+        a(ui-sref='.ssh-keys')
+          | SSH Keys
+  .page-layout-content
+    ui-view

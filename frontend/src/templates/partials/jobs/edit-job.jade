@@ -1,0 +1,61 @@
+form(name='jobEditor' role='form' ng-submit='save()')
+  .modal-header
+    button.close(type="button" data-dismiss="modal" aria-label="Close" ng-click='cancel()')
+      span(aria-hidden="true") &times;
+    h4.modal-title(ng-if='job.id')
+      | Edit Job
+    h4.modal-title(ng-if='!job.id')
+      | Create Job
+
+  .modal-body
+    .form-group
+      label.control-label
+        | Job Name
+      input.form-control(type='text' ng-model='job.name' placeholder='Name' required='' focus-me='true')
+    .form-group
+      label.control-label
+        | Local Key
+      input.form-control(type='text' ng-model='job.local_key' placeholder='Local Key')
+    .form-group
+      label.control-label
+        | AWS Key
+      input.form-control(type='text' ng-model='job.aws_key' placeholder='AWS Key')
+    .form-group
+      label.control-label
+        | Run Every
+      select.form-control(ng-model='job.interval')
+        option(ng-value='3600') 1 hour
+        option(ng-value='7200') 2 hours
+        option(ng-value='10800') 3 hours
+        option(ng-value='14400') 4 hours
+        option(ng-value='18000') 5 hours
+        option(ng-value='21600') 6 hours
+        option(ng-value='25200') 7 hours
+        option(ng-value='28800') 8 hours
+        option(ng-value='32400') 9 hours
+        option(ng-value='36000') 10 hours
+        option(ng-value='39600') 11 hours
+        option(ng-value='43200') 12 hours
+        option(ng-value='46800') 13 hours
+        option(ng-value='50400') 14 hours
+        option(ng-value='54000') 15 hours
+        option(ng-value='57600') 16 hours
+        option(ng-value='61200') 17 hours
+        option(ng-value='64800') 18 hours
+        option(ng-value='68400') 19 hours
+        option(ng-value='72000') 20 hours
+        option(ng-value='75600') 21 hours
+        option(ng-value='79200') 22 hours
+        option(ng-value='82800') 23 hours
+        option(ng-value='86400') 24 hours
+    .checkbox
+      label
+        input(type='checkbox' ng-model='job.disabled')
+        | Disable this job
+    wh-error-box(error='error')
+
+  .modal-footer
+    button.btn.btn-default(type='button' ng-click='cancel()')
+      | Cancel
+    button.btn.btn-success(type='submit' ng-click='save()' ng-disabled='jobEditor.$invalid || working')
+      | Save Changes

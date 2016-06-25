@@ -1,0 +1,31 @@
+.modal-header
+  button.close(type="button" data-dismiss="modal" aria-label="Close" ng-click='cancel()')
+    span(aria-hidden="true") &times;
+  h4.modal-title
+    | Delete Job
+
+.modal-body
+  .alert.alert-danger
+    | Are you sure you want to delete this job?
+  .form-group
+    label.control-label
+      | Job Name
+    p.form-control-static
+      | {{ job.name }}
+  .form-group
+    label.control-label
+      | Local Key
+    p.form-control-static
+      | {{ job.local_key }}
+  .form-group
+    label.control-label
+      | AWS Key
+    p.form-control-static
+      | {{ job.aws_key }}
+  wh-error-box(error='error')
+
+.modal-footer
+  button.btn.btn-default(type='button' ng-click='cancel()')
+    | Cancel
+  button.btn.btn-danger(type='submit' ng-click='save()' ng-disabled='jobEditor.$invalid || working')
+    | Delete Job
